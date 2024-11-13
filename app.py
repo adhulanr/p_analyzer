@@ -11,11 +11,6 @@ client_id = os.getenv("SPOTIFY_CLIENT_ID")
 client_secret = os.getenv("SPOTIFY_CLIENT_SECRET")
 api_key = os.getenv("GOOGLE_GENAI_API_KEY")
 
-# client_id = "c465aaab78de4405bf27729e2e751a23"
-# client_secret = "edd928b6cff540d3a2f378625f6e283b"
-
-# Google GenAI API key
-# api_key = 'AIzaSyB8bDXuAZIlnevOoFvdh1ZEd4DTJwa4VoM'
 
 # Configure app
 app = Flask(__name__)
