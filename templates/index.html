@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1DB954;
+            color: #ffffff;
+            font-family: 'Montserrat', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+        .analyzer-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .form-control {
+            background-color: #1DB954;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+        .form-control::placeholder {
+            color: #ffffff;
+            opacity: 0.8;
+        }
+        .btn-primary {
+            background-color: #ffffff;
+            color: #1DB954;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #000000;
+            opacity: 0.9;
+        }
+        .analysis-box {
+            background-color: #f8f9fa;
+            color: #212529;
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #1DB954;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .song-list {
+            margin-bottom: 1rem;
+        }
+    </style>
+    <title>Spotify Playlist Check</title>
+</head>
+
+<body class="my-4">
+    <div class="container">
+        <p></p>
+        <p></p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Black_Spotify_logo_with_text.svg" alt="Spotify Logo" width="200">
+        <p class="analyzer-title">Playlist Analyzer</p>
+        <form action="/" method="post">
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control" name="p_url" placeholder="Playlist URL" type="text">
+            </div>
+            <button class="btn btn-primary" type="submit">Analyze</button>
+        </form>
+        <p></p>
+        <p></p>
+        
+        <!-- Display Analysis -->
+        {% if analysis %}
+            <div class="analysis-box">
+                {{ analysis|safe }}
+            </div>
+        {% endif %}
+        
+        <!-- Display Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="mt-4">
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
